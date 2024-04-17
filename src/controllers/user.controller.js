@@ -11,11 +11,11 @@ const getAll = catchError(async(req, res) => {
 });
 
 const create = catchError(async(req, res) => {
-    const { email, password, firstName, lastName, country, frontBaseUrl} = req.body
+    const { email, password, firstName, lastName, country,image, frontBaseUrl} = req.body
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const result = await User.create({ email:email, firstName:firstName, lastName:lastName, country:country, password: hashedPassword});
+    const result = await User.create({ email:email, firstName:firstName, lastName:lastName, country:country,image:image, password: hashedPassword});
 
     const code = require("crypto").randomBytes(64).toString("hex");
 
