@@ -15,7 +15,7 @@ const create = catchError(async(req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const result = await User.create({ ...req.body, password: hashedPassword});
+    const result = await User.create({ email:email, firstName:firstName, lastName:lastName, country:country, password: hashedPassword});
 
     const code = require("crypto").randomBytes(64).toString("hex");
 
